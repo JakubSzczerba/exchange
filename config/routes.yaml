@@ -1,5 +1,9 @@
-controllers:
-    resource:
-        path: ../src/Controller/
-        namespace: Exchange\Controller
-    type: attribute
+min_max_rate:
+    path: /exchange/list
+    controller: 'Exchange\Application\Controller\CurrencyController::minMaxRate'
+    methods: ['GET', 'POST']
+
+convert_rate:
+    path: /exchange/convert
+    controller: 'Exchange\Application\Controller\CurrencyController::convertRate'
+    methods: ['GET', 'POST']

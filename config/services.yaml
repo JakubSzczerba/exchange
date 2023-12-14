@@ -1,4 +1,6 @@
 parameters:
+    currency_beacon_api_key: '%env(CURRENCY_BEACON_API_KEY)%'
+    currency_beacon_api_url: '%env(CURRENCY_BEACON_API_URL)%'
 
 services:
     _defaults:
@@ -11,3 +13,16 @@ services:
             - '../src/DependencyInjection/'
             - '../src/Entity/'
             - '../src/Kernel.php'
+
+    http_client:
+        class: GuzzleHttp\Client
+
+    Exchange\Infrastructure\Currency\Api\CurrencyBeaconApi:
+        arguments:
+            $apiUrl: '%currency_beacon_api_url%'
+            $apiKey: '%currency_beacon_api_key%'
+            $httpClient: '@http_client'
+
+    Exchange\Application\Controller\CurrencyController:
+        tags:
+            - { name: 'controller.service_arguments' }
