@@ -23,6 +23,9 @@ services:
       APP_ENV: "dev"
       APP_SECRET: "89f8aaa6d247f6af93e7da18b9a88b1b"
       APP_HOSTNAME: "exchange.local"
+      MESSENGER_TRANSPORT_DSN: "doctrine://default?auto_setup=0"
+      CURRENCY_BEACON_API_KEY: "LAhNhf7Hz2H3SHKCdyx2bIUtCpi2lTNR"
+      CURRENCY_BEACON_API_URL: "https://api.currencybeacon.com/v1/"
   nginx:
     image: nginx:1.19
     ports:

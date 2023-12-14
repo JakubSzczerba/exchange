@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">
+                        Exchange
+                    </div>
+                    <div class="card-body">
+                        {{ form_start(form) }}
+                        <div class="form-group">
+                            {{ form_row(form.amount, {'attr': {'class': 'form-control'}}) }}
+                        </div>
+                        <div class="form-group">
+                            {{ form_row(form.from, {'attr': {'class': 'form-control'}}) }}
+                        </div>
+                        <div class="form-group">
+                            {{ form_row(form.to, {'attr': {'class': 'form-control'}}) }}
+                        </div>
+                        {{ form_end(form) }}
+                        {% if result is not empty %}
+                            <hr>
+                            <div class="alert alert-success">
+                                {{ result.amount }} {{ result.from }} is equal to
+                                <span style="font-weight: bold">{{ result.value }}</span> {{ result.to }}
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
